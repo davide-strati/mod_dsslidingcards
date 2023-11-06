@@ -1,0 +1,81 @@
+.sliding-cards__container {
+    padding: var(--space-m-4xl) 0;
+    gap: var(--space-4xl);
+    flex-flow: column wrap;
+}
+
+.intro {
+    padding-bottom: var(--space-xl-4xl);
+}
+
+
+
+.sliding-card__subcontainer {
+    opacity: 1;
+    transform: scale(1);
+    transition:
+        all 0.2s ease-in 0.4s;
+}
+
+/* Single card */
+
+.sliding-card__container {
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: var(--space-l) var(--space-s);
+    gap: var(--space-s);
+    grid-template-columns: 1fr;
+    box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.23), 0px 10px 20px 0px rgba(0, 0, 0, 0.19);
+}
+
+
+/* Crad Main Content Elements */
+.sliding-card__title {
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+}
+.sliding-card__content,
+.sliding-card__title {
+    text-align: center;
+}
+
+
+/* Card Animation */
+
+
+.retro-content__container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: -100%;
+    left: 0;
+    opacity: 0;
+    padding: var(--space-l) var(--space-s);
+    transition: all 0.4s ease-out;
+}
+
+/* --> On Hover: main content scale and fade + retro slide in from below */
+.sliding-card__container:hover .sliding-card__subcontainer {
+    opacity: 0;
+    transform: scale(0.9);
+    transform-origin: center;
+    transition:
+        transform 0.2s ease-in-out,
+        opacity 0.2s ease-out 0.1s;
+}
+
+.sliding-card__container:hover .retro-content__container {
+    bottom: 0;
+    opacity: 1;
+    transition: all 0.4s ease-in 0.2s;
+}
+
+
+
+@media screen and (min-width: 768px) {
+    .sliding-cards__container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

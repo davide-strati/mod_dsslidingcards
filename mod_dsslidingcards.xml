@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.8" client="site" method="upgrade">
+	<name>MOD_DS_SLIDING_CARDS</name>
+	<creationDate>20-09-2023</creationDate>
+	<author>Davide Strati</author>
+	<authorEmail>developer@davide-strati.it</authorEmail>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>1.0</version>
+	<description>MOD_SLIDING_CARDS_XML_DESCRIPTION</description>
+	<namespace>Joomla\Module\DsSlidingCards</namespace>
+
+	<files>
+		<filename module="mod_dsslidingcards">mod_dsslidingcards.php</filename>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+		<folder>Helper</folder>
+		<filename>mod_dsslidingcards.xml</filename>
+		<filename>tmpl/mod_dsslidingcards.css</filename>
+	</files>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="intro" type="editor" label="MOD_DS_SLIDINGCARDS_INTRO_LABEL" filter="raw" buttons="true" editor="tinymce" />
+			</fieldset>
+			<fieldset name="Cards" label="Cards">
+				<field name="cardElements" type="subform" label="MOD_DS_SLIDINGCARDS_CARDELEMENTS_LABEL" description="MOD_DS_SLIDINGCARDS_CARDELEMENTS_DESC" multiple="true" min="1">
+					<form>
+						<field name="cardIcon" type="media" label="MOD_DS_SLIDINGCARDS_ICON_LABEL"/>
+						<field name="alttext" type="text" label="MOD_DS_SLIDINGCARDS_ALT_TEXT_LABEL" />
+						<field name="cardTitle" type="text" label="MOD_DS_SLIDINGCARDS_TITLE_LABEL" />
+						<field name="cardContent" type="editor" label="MOD_DS_SLIDINGCARDS_CONTENT_LABEL" buttons="true" filter="safehtml" />
+						<field name="showRetro" type="radio" default="0" label="MOD_DS_SLIDINGCARDS_SHOW_RETRO_LABEL" class="btn-group btn-group-yesno">
+							<option value="1">Si</option>
+							<option value="0">No</option>
+						</field>
+						<field name="retroContent" type="editor" label="MOD_DS_SLIDINGCARDS_RETRO_CONTENT_LABEL" buttons="true" filter="safehtml" showon="showRetro:1" />
+						<field name="showButton" type="radio" default="0" label="MOD_DS_SLIDINGCARDS_SHOW_BUTTON_LABEL" class="btn-group btn-group-yesno">
+							<option value="1">Si</option>
+							<option value="0">No</option>
+						</field>
+						<field name="buttonStyle" type="text" label="MOD_DS_SLIDINGCARDS_BUTTON_STYLE_LABEL" showon="showButton:1" />
+						<field name="buttonURL" type="url" label="MOD_DS_SLIDINGCARDS_BUTTON_URL_LABEL" size="10" showon="showButton:1" />
+						<field name="buttonText" type="text" label="MOD_DS_SLIDINGCARDS_BUTTON_TXT_LABEL" showon="showButton:1" />
+						<field name="buttonAlt" type="text" label="MOD_DS_SLIDINGCARDS_BUTTON_ALT_LABEL" showon="showButton:1" />
+						<field name="buttonTarget" type="list" label="MOD_DS_SLIDINGCARDS_BUTTON_TARGET_LABEL" showon="showButton:1">
+							<option value="0">Self</option>
+							<option value="1">Blank</option>
+						</field>
+					</form>
+				</field>
+			</fieldset>
+			<fieldset name="options" label="COM_MODULES_BASIC_FIELDSET_LABEL">
+				<field name="prepare_content" type="radio" layout="joomla.form.field.radio.switcher" label="MOD_CUSTOM_FIELD_PREPARE_CONTENT_LABEL" description="MOD_CUSTOM_FIELD_PREPARE_CONTENT_DESC" default="0" filter="integer">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="backgroundimage" type="media" label="MOD_CUSTOM_FIELD_BACKGROUNDIMAGE_LABEL" />
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" class="form-select" validate="moduleLayout" />
+
+				<field name="moduleclass_sfx" type="textarea" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" rows="3" validate="CssIdentifier" />
+
+				<field name="cache" type="list" label="COM_MODULES_FIELD_CACHING_LABEL" default="1" filter="integer" validate="options">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field name="cache_time" type="number" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" default="900" filter="integer" />
+
+				<field name="cachemode" type="hidden" default="static">
+					<option value="static"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
